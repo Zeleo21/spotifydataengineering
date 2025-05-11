@@ -1,14 +1,8 @@
-import os
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-from dotenv import load_dotenv
+from spotifydataengineering.src.artists.artists import get_top_artists
 from spotifydataengineering.src.db import DBConfig
+from spotifydataengineering.src.spotify import SpotifyConfig
 
-load_dotenv()
-
-scope = 'user-library-read'
-
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+sp = SpotifyConfig()
 
 def get_current_user_saved_tracks():
     results = sp.current_user_saved_tracks()
@@ -21,8 +15,8 @@ def get_current_user_saved_tracks():
 
 
 print(sp.current_user())
-# get_current_user_saved_tracks()
-
+#get_current_user_saved_tracks()
+get_top_artists()
 
 db = DBConfig()
 db.execute("SELECT * FROM test;")
