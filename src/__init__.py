@@ -17,7 +17,7 @@ def get_current_user_saved_tracks():
 # This is a simple main for now
 # -> plans to have a little CLI for the user to choose what they want to do with the data
 def main():
-    artists = get_top_artists()
+    artists = get_top_artists(limit=50, time_range='long_term')
     insert_top_artists(artists)
 
 if __name__ == "__main__":
