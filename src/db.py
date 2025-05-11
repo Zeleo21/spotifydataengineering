@@ -24,6 +24,6 @@ class DBConfig:
                 password=os.getenv('DB_PASSWORD'),
                 port=os.getenv('DB_PORT'),
             )
-            cls._instance.cursor = cls._instance.conn.cursor()
             print("Database connection established.")
-        return cls._instance.cursor
+            cls._instance.cursor = cls._instance.conn.cursor()
+        return cls._instance

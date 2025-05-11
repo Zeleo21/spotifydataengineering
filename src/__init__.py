@@ -1,4 +1,4 @@
-from spotifydataengineering.src.artists.artists import get_top_artists
+from spotifydataengineering.src.artists.artists import get_top_artists, insert_top_artists
 from spotifydataengineering.src.db import DBConfig
 from spotifydataengineering.src.spotify import SpotifyConfig
 
@@ -14,10 +14,11 @@ def get_current_user_saved_tracks():
         print(f"Link: {track['external_urls']['spotify']}")
 
 
-print(sp.current_user())
-#get_current_user_saved_tracks()
-get_top_artists()
+# This is a simple main for now
+# -> plans to have a little CLI for the user to choose what they want to do with the data
+def main():
+    artists = get_top_artists()
+    insert_top_artists(artists)
 
-db = DBConfig()
-db.execute("SELECT * FROM test;")
-print(db.fetchall())
+if __name__ == "__main__":
+    main()
